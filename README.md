@@ -4,3 +4,4 @@
 ### 3_1 is the progarm about exhaustive enumeration
 ### 3_2 is the program to calculate the sum after converting string to float
 ### 4 is the program using bisection search to find the root of a integer
+### 5 is the program of hangman game, which takes one parameter - the secretWord the user is to guess. 
