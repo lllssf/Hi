@@ -36,4 +36,50 @@ def zero_pad(X, pad):
     ### END CODE HERE ###
     
     return X_pad
-    ```
+```
+### 3.2 - Single step of convolution 
+
+In this part, implement a single step of convolution, in which you apply the filter to a single position of the input. This will be used to build a convolutional unit, which: 
+
+- Takes an input volume 
+- Applies a filter at every position of the input
+- Outputs another volume (usually of different size)
+
+<img src="images/Convolution_schematic.gif" style="width:500px;height:300px;">
+<caption><center> <u> <font color='purple'> **Figure 2** </u><font color='purple'>  : **Convolution operation**<br> with a filter of 2x2 and a stride of 1 (stride = amount you move the window each time you slide) </center></caption>
+
+In a computer vision application, each value in the matrix on the left corresponds to a single pixel value, and we convolve a 3x3 filter with the image by multiplying its values element-wise with the original matrix, then summing them up and adding a bias. In this first step of the exercise, you will implement a single step of convolution, corresponding to applying a filter to just one of the positions to get a single real-valued output. 
+
+Later in this notebook, you'll apply this function to multiple positions of the input to implement the full convolutional operation. 
+
+**Exercise**: Implement conv_single_step(). [Hint](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.sum.html).
+
+
+```
+# GRADED FUNCTION: conv_single_step
+
+def conv_single_step(a_slice_prev, W, b):
+    """
+    Apply one filter defined by parameters W on a single slice (a_slice_prev) of the output activation 
+    of the previous layer.
+    
+    Arguments:
+    a_slice_prev -- slice of input data of shape (f, f, n_C_prev)
+    W -- Weight parameters contained in a window - matrix of shape (f, f, n_C_prev)
+    b -- Bias parameters contained in a window - matrix of shape (1, 1, 1)
+    
+    Returns:
+    Z -- a scalar value, result of convolving the sliding window (W, b) on a slice x of the input data
+    """
+
+    ### START CODE HERE ### (≈ 2 lines of code)
+    # Element-wise product between a_slice and W. Do not add the bias yet.
+    s = np.multiply(a_slice_prev,W)
+    # Sum over all entries of the volume s.
+    Z = np.sum(s)
+    # Add bias b to Z. Cast b to a float() so that Z results in a scalar value.
+    Z += b
+    ### END CODE HERE ###
+
+    return Z
+```
