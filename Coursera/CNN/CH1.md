@@ -2,9 +2,6 @@
 
 Zero-padding adds zeros around the border of an image:
 
-<img src="images/PAD.png" style="width:600px;height:400px;">
-<caption><center> <u> <font color='purple'> **Figure 1** </u><font color='purple'>  : **Zero-Padding**<br> Image (3 channels, RGB) with a padding of 2. </center></caption>
-
 The main benefits of padding are the following:
 
 - It allows you to use a CONV layer without necessarily shrinking the height and width of the volumes. This is important for building deeper networks, since otherwise the height/width would shrink as you go to deeper layers. An important special case is the "same" convolution, in which the height/width is exactly preserved after one layer. 
@@ -45,9 +42,6 @@ In this part, implement a single step of convolution, in which you apply the fil
 - Applies a filter at every position of the input
 - Outputs another volume (usually of different size)
 
-<img src="images/Convolution_schematic.gif" style="width:500px;height:300px;">
-<caption><center> <u> <font color='purple'> **Figure 2** </u><font color='purple'>  : **Convolution operation**<br> with a filter of 2x2 and a stride of 1 (stride = amount you move the window each time you slide) </center></caption>
-
 In a computer vision application, each value in the matrix on the left corresponds to a single pixel value, and we convolve a 3x3 filter with the image by multiplying its values element-wise with the original matrix, then summing them up and adding a bias. In this first step of the exercise, you will implement a single step of convolution, corresponding to applying a filter to just one of the positions to get a single real-valued output. 
 
 Later in this notebook, you'll apply this function to multiple positions of the input to implement the full convolutional operation. 
@@ -83,3 +77,16 @@ def conv_single_step(a_slice_prev, W, b):
 
     return Z
 ```
+### 3.3 - Convolutional Neural Networks - Forward pass
+
+In the forward pass, you will take many filters and convolve them on the input. Each 'convolution' gives you a 2D matrix output. You will then stack these outputs to get a 3D volume。
+
+**Exercise**: Implement the function below to convolve the filters W on an input activation A_prev. This function takes as input A_prev, the activations output by the previous layer (for a batch of m inputs), F filters/weights denoted by W, and a bias vector denoted by b, where each filter has its own (single) bias. Finally you also have access to the hyperparameters dictionary which contains the stride and the padding. 
+
+**Hint**: 
+1. To select a 2x2 slice at the upper left corner of a matrix "a_prev" (shape (5,5,3)), you would do:
+```python
+a_slice_prev = a_prev[0:2,0:2,:]
+```
+This will be useful when you will define `a_slice_prev` below, using the `start/end` indexes you will define.
+2. To define a_slice you will need to first define its corners `vert_start`, `vert_end`, `horiz_start` and `horiz_end`. This figure may be helpful for you to find how each of the corner can be defined using h, w, f and s in the code below.
