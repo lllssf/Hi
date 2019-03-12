@@ -1,4 +1,7 @@
 # some program I have learnt 
+## Coursera
+Certificate and code
+
 ## The Book 
 2_4 is the program find the biggest odd
 
@@ -9,5 +12,3 @@
 4 is the program using bisection search to find the root of a integer
 
 5 is the program of hangman game, which takes one parameter - the secretWord the user is to guess. 
-## Coursera
-Certificate and code
