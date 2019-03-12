@@ -68,7 +68,7 @@ def conv_single_step(a_slice_prev, W, b):
 
     ### START CODE HERE ### (≈ 2 lines of code)
     # Element-wise product between a_slice and W. Do not add the bias yet.
-    s = np.multiply(a_slice_prev,W)
+    s = a_slice_prev * W  #or s = np.multiply(a_slice_prev, W)
     # Sum over all entries of the volume s.
     Z = np.sum(s)
     # Add bias b to Z. Cast b to a float() so that Z results in a scalar value.
