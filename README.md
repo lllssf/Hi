@@ -1,5 +1,3 @@
-[python packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
-[tensorflow 中文社区](http://www.tensorfly.cn/tfdoc/get_started/basic_usage.html)
 ## Coursera
 Certificate and code
 
@@ -13,3 +11,6 @@ Certificate and code
 4 is the program using bisection search to find the root of a integer
 
 5 is the program of hangman game, which takes one parameter - the secretWord the user is to guess. 
+## 其他资料
+[python packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)\
+[tensorflow 中文社区](http://www.tensorfly.cn/tfdoc/get_started/basic_usage.html)
