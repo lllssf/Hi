@@ -1,4 +1,5 @@
 [python packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
+[tensorflow 中文社区](http://www.tensorfly.cn/tfdoc/get_started/basic_usage.html)
 ## Coursera
 Certificate and code
 
